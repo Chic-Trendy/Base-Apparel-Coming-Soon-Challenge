@@ -3,66 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Base Apparel Coming Soon</title>
+    <title>Base Apparel - Coming Soon</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon-32x32.png" type="image/png">
+
+    <!-- Google Fonts (Libre Franklin) -->
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- CSS Stylesheet -->
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;600&display=swap" rel="stylesheet">
+
 </head>
 <body>
-    <header>
-        <img src="logo.svg" alt="Base Apparel Logo" class="logo">
-    </header>
+    <div class="container">
+        <!-- Background Pattern -->
+        <img src="images/bg-pattern-desktop.svg" alt="Background Pattern" class="bg-pattern">
 
-    <main>
-        <section class="intro-section">
-            <h1>We're coming soon</h1>
-            <p>Hello fellow shoppers! We're currently building our new fashion store. Add your email below to stay up-to-date with announcements and our launch deals.</p>
-        </section>
+        <!-- Logo -->
+        <header>
+            <img src="images/logo.svg" alt="Base Apparel Logo" class="logo">
+        </header>
 
-        <section class="form-section">
-            <form id="email-form" action="#" method="POST">
-                <div class="form-control">
-                    <input type="email" id="email" name="email" placeholder="Email Address" required>
-                    <button type="submit" aria-label="Submit email">
-                        <img src="icon-arrow.svg" alt="Arrow icon">
-                    </button>
+        <!-- Hero Section -->
+        <main>
+            <section class="hero-section">
+                <!-- Hero Image -->
+                <img src="images/hero-desktop.jpg" alt="Hero Image" class="hero-image">
+
+                <!-- Text Content -->
+                <div class="hero-text">
+                    <h1>We're coming soon</h1>
+                    <p>Hello fellow shoppers! We're currently building our new fashion store. Add your email below to stay up-to-date with announcements and our launch deals.</p>
+
+                    <!-- Email Form -->
+                    <form action="#" method="POST" class="email-form">
+                        <div class="input-group">
+                            <input type="email" name="email" placeholder="Email Address" required>
+                            <button type="submit" class="submit-btn">
+                                <img src="images/icon-arrow.svg" alt="Submit">
+                            </button>
+                        </div>
+                        <!-- Error Icon -->
+                        <div class="error-message">
+                            <img src="images/icon-error.svg" alt="Error Icon">
+                            <p>Please provide a valid email</p>
+                        </div>
+                    </form>
                 </div>
-                <p class="error-message" id="error-message"></p>
-            </form>
+            </section>
+        </main>
+
+        <!-- Preview Section -->
+        <section class="preview-section">
+            <img src="images/desktop-design.jpg" alt="Desktop Design Preview" class="design-preview">
+            <img src="images/desktop-preview.jpg" alt="Desktop Design Example" class="design-preview">
         </section>
 
-        <section class="image-section">
-            <img src="hero-desktop.jpg" alt="Hero Image" class="hero-image">
-        </section>
-    </main>
+    </div>
 
-    <footer>
-        <p>&copy; Base Apparel. All rights reserved.</p>
-    </footer>
-
-    <script>
-        const form = document.getElementById('email-form');
-        const emailInput = document.getElementById('email');
-        const errorMessage = document.getElementById('error-message');
-
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const emailValue = emailInput.value.trim();
-            if (!validateEmail(emailValue)) {
-                errorMessage.textContent = "Please provide a valid email";
-                emailInput.classList.add('error');
-            } else {
-                errorMessage.textContent = "";
-                emailInput.classList.remove('error');
-                // Submit form or handle valid email
-                alert('Form submitted successfully');
-            }
-        });
-
-        function validateEmail(email) {
-            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return re.test(String(email).toLowerCase());
+    <!-- Styles (This would typically be in a separate CSS file) -->
+    <style>
+        body {
+            font-family: 'Libre Franklin', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
         }
-    </script>
+
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 1440px;
+            padding: 20px;
+        }
+
+        /* Background Pattern */
+        .bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            width: 100%;
+            height: auto;
+        }
+
+        .logo {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+
+        .hero-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hero-image {
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .hero-text {
+            max-width: 500px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .email-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-group {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        input[type="email"] {
+            padding: 0.75rem 1rem;
+            border: 1px solid #ccc;
+            border-radius: 30px;
+            flex: 1;
+            outline: none;
+        }
+
+        .submit-btn {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            right: 10px;
+        }
+
+        .error-message {
+            display: none; /* Hidden by default, can show dynamically with JavaScript */
+            color: red;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .design-preview {
+            margin: 20px 0;
+            width: 100%;
+            max-width: 600px;
+        }
+    </style>
 </body>
 </html>

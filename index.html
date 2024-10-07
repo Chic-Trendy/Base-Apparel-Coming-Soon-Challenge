@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Base Apparel Coming Soon</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <img src="logo.svg" alt="Base Apparel Logo" class="logo">
+    </header>
+
+    <main>
+        <section class="intro-section">
+            <h1>We're coming soon</h1>
+            <p>Hello fellow shoppers! We're currently building our new fashion store. Add your email below to stay up-to-date with announcements and our launch deals.</p>
+        </section>
+
+        <section class="form-section">
+            <form id="email-form" action="#" method="POST">
+                <div class="form-control">
+                    <input type="email" id="email" name="email" placeholder="Email Address" required>
+                    <button type="submit" aria-label="Submit email">
+                        <img src="icon-arrow.svg" alt="Arrow icon">
+                    </button>
+                </div>
+                <p class="error-message" id="error-message"></p>
+            </form>
+        </section>
+
+        <section class="image-section">
+            <img src="hero-desktop.jpg" alt="Hero Image" class="hero-image">
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; Base Apparel. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const form = document.getElementById('email-form');
+        const emailInput = document.getElementById('email');
+        const errorMessage = document.getElementById('error-message');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const emailValue = emailInput.value.trim();
+            if (!validateEmail(emailValue)) {
+                errorMessage.textContent = "Please provide a valid email";
+                emailInput.classList.add('error');
+            } else {
+                errorMessage.textContent = "";
+                emailInput.classList.remove('error');
+                // Submit form or handle valid email
+                alert('Form submitted successfully');
+            }
+        });
+
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(String(email).toLowerCase());
+        }
+    </script>
+</body>
+</html>
